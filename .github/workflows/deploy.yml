@@ -26,11 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:XYZ
+        run: npm start & npx wait-on http://127.0.0.1:$PORT  #Accessing an env using $
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "..."
+        run: echo "MONGODB_DB_NAME: ${{env.MONGODB_DB_NAME}}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
