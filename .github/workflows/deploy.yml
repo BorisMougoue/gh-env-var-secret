@@ -8,12 +8,12 @@ env:
   MONGODB_DB_NAME: gha-demo
 jobs:
   test:
+    environment: testing # the test job will use variables and secrets define in the testing environment
     env: 
      MONGODB_DB_NAME: gha-demo
      MONGODB_CLUSTER_ADDRESS: cluster0.15qw.mongodb.net
      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
      PORT: 8080
-    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
